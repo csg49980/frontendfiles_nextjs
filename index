@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Property Manager Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <div class="logo">A</div>
+      <ul>
+        <li>Dashboard</li>
+        <li>Calendar</li>
+        <li>Leasing</li>
+        <li>Properties</li>
+        <li>People</li>
+        <li>Accounting</li>
+        <li>Maintenance</li>
+        <li>Reporting</li>
+        <li>Communication</li>
+        <li class="new">What's New</li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main">
+      <header>
+        <div class="search-container">
+          <input type="text" placeholder="Search AppFolio" />
+        </div>
+        <div class="top-menu">
+          <button>Add Functionality</button>
+          <button>Help & Training</button>
+          <span>Karen Chu</span>
+        </div>
+      </header>
+
+      <section class="content">
+        <div class="dashboard-left">
+          <h2>Dashboard</h2>
+          <div class="notice">
+            Have you checked your Financial Diagnostics Page recently? 
+            <a href="#">Click here</a> to check up on your Financial Health. 
+            <a href="#">Remind me in 7 days</a> | 
+            <a href="#">I'm fine... don't show this again</a>
+          </div>
+
+          <div class="section">
+            <div class="section-title" onclick="toggleSection(this)">Move Ins</div>
+            <div class="section-content">List of tenants moving in soon...</div>
+          </div>
+
+          <div class="section">
+            <div class="section-title" onclick="toggleSection(this)">Move Outs</div>
+            <div class="section-content">Scheduled move outs and tasks...</div>
+          </div>
+
+          <div class="section">
+            <div class="section-title" onclick="toggleSection(this)">Online Payments</div>
+            <div class="section-content">
+              You are currently not set up to take advantage of AppFolio's Payment Platform.
+              <a href="#">Click here</a> to learn more.
+            </div>
+          </div>
+
+          <div class="portal-stats">
+            <h3>Online Portal Adoption</h3>
+            <div class="stat green">0% ACTIVATED - <a href="#">View Tenants</a></div>
+            <div class="stat orange">83% NON-ACTIVATED - <a href="#">Send Activation Emails</a></div>
+            <div class="stat red">17% NO EMAIL - <a href="#">View Homeowners</a></div>
+          </div>
+        </div>
+
+        <div class="dashboard-right">
+          <h4>Smart Tasks</h4>
+          <div class="task-group">
+            <h5>Calendar</h5>
+            <a href="#">View Calendar</a>
+          </div>
+          <div class="task-group">
+            <h5>Property</h5>
+            <a href="#">New Property</a>
+          </div>
+          <div class="task-group">
+            <h5>People</h5>
+            <a href="#">Move In Tenant</a>
+            <a href="#">Tenant Receipt</a>
+            <a href="#">Homeowner Receipt</a>
+            <a href="#">Enter Bill</a>
+            <a href="#">New Owner</a>
+            <a href="#">New Vendor</a>
+            <a href="#">Rent Increase</a>
+          </div>
+          <div class="task-group">
+            <h5>Reports</h5>
+            <a href="#">Delinquency</a>
+            <a href="#">Tenant Ledger</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
