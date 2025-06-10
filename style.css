@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f5f7fa;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  background: #2c3e50;
+  color: white;
+  padding: 1rem;
+}
+
+.sidebar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  background: white;
+  color: #2c3e50;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 0.8rem 0;
+  cursor: pointer;
+}
+
+.sidebar .new::after {
+  content: "●";
+  color: red;
+  margin-left: 5px;
+}
+
+/* Main Content */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: #ecf0f1;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.search-container input {
+  padding: 0.5rem;
+  width: 250px;
+}
+
+.top-menu button {
+  margin-right: 10px;
+}
+
+.content {
+  display: flex;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.dashboard-left {
+  flex: 2;
+  margin-right: 2rem;
+}
+
+.notice {
+  background: #dff0d8;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.section {
+  background: white;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+.section-title {
+  padding: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+}
+
+.section-content {
+  display: none;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+.portal-stats {
+  background: white;
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.portal-stats .stat {
+  margin: 0.5rem 0;
+}
+
+.green {
+  color: green;
+}
+
+.orange {
+  color: orange;
+}
+
+.red {
+  color: red;
+}
+
+/* Right panel */
+.dashboard-right {
+  flex: 1;
+  background: #fafafa;
+  border-left: 1px solid #ccc;
+  padding: 1rem;
+}
+
+.task-group {
+  margin-bottom: 1.5rem;
+}
+
+.task-group h5 {
+  margin-bottom: 0.5rem;
+}
+
+.task-group a {
+  display: block;
+  color: #2980b9;
+  text-decoration: none;
+  margin-bottom: 0.3rem;
+}
