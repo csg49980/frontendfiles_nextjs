@@ -5,7 +5,7 @@
   "features": "login", "tenant management", 
 "dependencies": {
   "react-scripts": "^5.0.1",
-  ...
+  
 }
 
 
