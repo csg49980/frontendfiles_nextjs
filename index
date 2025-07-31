@@ -43,12 +43,12 @@
     <div class="main">
       <header>
         <div class="search-container">
-          <input type="text" placeholder="Search AppFolio" />
+          <input type="text" placeholder="Your momXXX" />
         </div>
         <div class="top-menu">
-          <button>Add Functionality</button>
-          <button>Help & Training</button>
-          <span>Karen Chu</span>
+          <button>XXX</button>
+          <button>XXX</button>
+          <span></span>
         </div>
       </header>
 
@@ -56,10 +56,10 @@
         <div class="dashboard-left">
           <h2>Dashboard</h2>
           <div class="notice">
-            Have you checked your Financial Diagnostics Page recently? 
-            <a href="#">Click here</a> to check up on your Financial Health. 
-            <a href="#">Remind me in 7 days</a> | 
-            <a href="#">I'm fine... don't show this again</a>
+          
+            <a href="#">Click here</a> 
+            <a href="#">linkXXX</a> | 
+            <a href="#">XXX</a>
           </div>
 
           <div class="section">
