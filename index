@@ -10,17 +10,31 @@
   <div class="container">
     <!-- Sidebar -->
     <nav class="sidebar">
-      <div class="logo">A</div>
+      <div class="rightsidesidebar">A</div>
       <ul>
-        <li>Dashboard</li>
+        <li>Message Center</li>
         <li>Calendar</li>
-        <li>Leasing</li>
-        <li>Properties</li>
-        <li>People</li>
+        <li>Tenate Leads</li>
+        <li>Task Reminder</li>
+        <li>Calenders</li>
+        <li>Property Notes</li>
+        <li>Portfolio</li>
         <li>Accounting</li>
-        <li>Maintenance</li>
-        <li>Reporting</li>
-        <li>Communication</li>
+        <li>Current Listings</li>
+        <li>Tax Records</li>
+        <li>Lease Tracker</li>
+        <li>Tenate Portal</li>
+        <li>Work Orders</li>
+        <li>Form Templates</li>
+        <li>Payment Portals</li>
+        <li>Move Ins/Move Outs</li>
+        <li>Surveys</li>
+        <li>Affordable Housing Checklist </li>
+        <li>Inspections</li>
+        <li>Vendors</li>
+        <li>Make Ready Tracker</li>
+        <li>Settings</li>
+        <li>Current Tenates</li> 
         <li class="new">What's New</li>
       </ul>
     </nav>
