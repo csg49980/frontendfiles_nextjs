@@ -3,119 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Property Manager Dashboard</title>
+  <title>PMS Dashboard</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <!-- Sidebar -->
-    <nav class="sidebar">
-      <div class="rightsidesidebar">A</div>
-      <ul>
+  <div class="pms-app locked" id="pmsApp">
+    <!-- Left Sidebar -->
+    <aside class="left-sidebar">
+      <button id="lockToggle">🔒 Lock</button>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="workspace" id="workspace">
+      <!-- Tiles will be added here -->
+    </main>
+
+    <!-- Right Sidebar -->
+    <aside class="right-sidebar">
+      <div class="sidebar-header">📂 Tools</div>
+      <ul class="sidebar-nav">
         <li>Message Center</li>
         <li>Calendar</li>
-        <li>Tenate Leads</li>
+        <li>Tenant Leads</li>
         <li>Task Reminder</li>
-        <li>Calenders</li>
         <li>Property Notes</li>
         <li>Portfolio</li>
         <li>Accounting</li>
         <li>Current Listings</li>
         <li>Tax Records</li>
         <li>Lease Tracker</li>
-        <li>Tenate Portal</li>
+        <li>Tenant Portal</li>
         <li>Work Orders</li>
         <li>Form Templates</li>
         <li>Payment Portals</li>
-        <li>Move Ins/Move Outs</li>
-        <li>Surveys</li>
-        <li>Affordable Housing Checklist </li>
+        <li>Move Ins / Move Outs</li>
         <li>Inspections</li>
         <li>Vendors</li>
-        <li>Make Ready Tracker</li>
-        <li>Settings</li>
-        <li>Current Tenates</li> 
         <li class="new">What's New</li>
       </ul>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="main">
-      <header>
-        <div class="search-container">
-          <input type="text" placeholder="Your momXXX" />
-        </div>
-        <div class="top-menu">
-          <button>XXX</button>
-          <button>XXX</button>
-          <span></span>
-        </div>
-      </header>
-
-      <section class="content">
-        <div class="dashboard-left">
-          <h2>Dashboard</h2>
-          <div class="notice">
-          
-            <a href="#">Click here</a> 
-            <a href="#">linkXXX</a> | 
-            <a href="#">XXX</a>
-          </div>
-
-          <div class="section">
-            <div class="section-title" onclick="toggleSection(this)">Move Ins</div>
-            <div class="section-content">List of tenants moving in soon...</div>
-          </div>
-
-          <div class="section">
-            <div class="section-title" onclick="toggleSection(this)">Move Outs</div>
-            <div class="section-content">Scheduled move outs and tasks...</div>
-          </div>
-
-          <div class="section">
-            <div class="section-title" onclick="toggleSection(this)">Online Payments</div>
-            <div class="section-content">
-              You are currently not set up to take advantage of AppFolio's Payment Platform.
-              <a href="#">Click here</a> to learn more.
-            </div>
-          </div>
-
-          <div class="portal-stats">
-            <h3>Online Portal Adoption</h3>
-            <div class="stat green">0% ACTIVATED - <a href="#">View Tenants</a></div>
-            <div class="stat orange">83% NON-ACTIVATED - <a href="#">Send Activation Emails</a></div>
-            <div class="stat red">17% NO EMAIL - <a href="#">View Homeowners</a></div>
-          </div>
-        </div>
-
-        <div class="dashboard-right">
-          <h4>Smart Tasks</h4>
-          <div class="task-group">
-            <h5>Calendar</h5>
-            <a href="#">View Calendar</a>
-          </div>
-          <div class="task-group">
-            <h5>Property</h5>
-            <a href="#">New Property</a>
-          </div>
-          <div class="task-group">
-            <h5>People</h5>
-            <a href="#">Move In Tenant</a>
-            <a href="#">Tenant Receipt</a>
-            <a href="#">Homeowner Receipt</a>
-            <a href="#">Enter Bill</a>
-            <a href="#">New Owner</a>
-            <a href="#">New Vendor</a>
-            <a href="#">Rent Increase</a>
-          </div>
-          <div class="task-group">
-            <h5>Reports</h5>
-            <a href="#">Delinquency</a>
-            <a href="#">Tenant Ledger</a>
-          </div>
-        </div>
-      </section>
-    </div>
+    </aside>
   </div>
 
   <script src="script.js"></script>
