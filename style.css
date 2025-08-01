@@ -10,6 +10,13 @@ body, html {
   height: 100vh;
   overflow: hidden;
 }
+.leftsidebar {
+  padding: 10px;
+  margin-right: 5px;
+  background: #34495e;
+  cursor: pointer;
+  transition: background 0.2s; 
+}
 
 .left-sidebar,
 .right-sidebar {
