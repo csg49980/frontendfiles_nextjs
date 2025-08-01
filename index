@@ -12,6 +12,10 @@
     <aside class="left-sidebar">
       <button id="lockToggle">🔒 Lock</button>
     </aside>
+    <!--left Sidebar-->
+ <class="leftsidebar" id="leftsidebarid"
+
+
 
     <!-- Main Workspace -->
     <main class="workspace" id="workspace">
