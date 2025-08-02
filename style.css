@@ -4,6 +4,20 @@ body, html {
   height: 100%;
   font-family: sans-serif;
 }
+.leftsidebar {
+  width: 60px
+  height: 100;
+  background-color: rgba (0, 255, 0, 0.5);
+  position: fixed;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding-top: 20px;
+  cursor: pointer;
+  transition: tranform 0.2s
+  
+  
 
 .pms-app {
   display: flex;
@@ -13,7 +27,7 @@ body, html {
 .leftsidebar {
   padding: 10px;
   margin-right: 5px;
-  background: #34495e;
+  background: 000000;
   cursor: pointer;
   transition: background 0.2s; 
 }
