@@ -14,8 +14,13 @@
     </aside>
     <!--left Sidebar-->
  <class="leftsidebar" id="leftsidebarid"
-
-
+     <ul class="leftsidebarclass">
+        <li>AI Assistant</li>
+        <li>Unlock Panels</li>
+        <li>Apperance</li>
+        <li>Switch User</li>
+        <li>Settings</li>
+      
 
     <!-- Main Workspace -->
     <main class="workspace" id="workspace">
