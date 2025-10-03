@@ -26,12 +26,12 @@
 </ul>
 </div>
       
-
+<div>
     <!-- Main Workspace -->
     <main class="workspace" id="workspace">
       <!-- Tiles will be added here -->
     </main>
-
+</div>
     <!-- Right Sidebar -->
    <!-- Right Sidebar -->
 <aside class="right-sidebar">
