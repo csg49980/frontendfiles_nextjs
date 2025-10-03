@@ -31,28 +31,31 @@
     </main>
 
     <!-- Right Sidebar -->
-    <aside class="right-sidebar">
-      <div class="sidebar-header">📂 Tools</div>
-      <ul class="sidebar-nav">
-        <li>Message Center</li>
-        <li>Calendar</li>
-        <li>Tenant Leads</li>
-        <li>Task Reminder</li>
-        <li>Property Notes</li>
-        <li>Portfolio</li>
-        <li>Accounting</li>
-        <li>Current Listings</li>
-        <li>Tax Records</li>
-        <li>Lease Tracker</li>
-        <li>Tenant Portal</li>
-        <li>Work Orders</li>
-        <li>Form Templates</li>
-        <li>Payment Portals</li>
-        <li>Move Ins / Move Outs</li>
-        <li>Inspections</li>
-        <li>Vendors</li>
-        <li class="new">What's New</li>
-      </ul>
+   <!-- Right Sidebar -->
+<aside class="right-sidebar">
+  <div class="sidebar-header">📂 Tools</div>
+  <ul class="sidebar-nav">
+    <li><a href="#">Message Center</a></li>
+    <li><a href="#">Calendar</a></li>
+    <li><a href="#">Tenant Leads</a></li>
+    <li><a href="#">Task Reminder</a></li>
+    <li><a href="#">Property Notes</a></li>
+    <li><a href="#">Portfolio</a></li>
+    <li><a href="#">Accounting</a></li>
+    <li><a href="#">Current Listings</a></li>
+    <li><a href="#">Tax Records</a></li>
+    <li><a href="#">Lease Tracker</a></li>
+    <li><a href="#">Tenant Portal</a></li>
+    <li><a href="#">Work Orders</a></li>
+    <li><a href="#">Form Templates</a></li>
+    <li><a href="#">Payment Portals</a></li>
+    <li><a href="#">Move Ins / Move Outs</a></li>
+    <li><a href="#">Inspections</a></li>
+    <li><a href="#">Vendors</a></li>
+    <li class="new"><a href="#">What's New</a></li>
+  </ul>
+</aside>
+
     </aside>
   </div>
 
