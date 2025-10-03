@@ -8,21 +8,23 @@
 </head>
 <body>
   <div class="pms-app locked" id="pmsApp">
-   
+<div>     
 <!-- Left Sidebar -->
     <aside class="left-sidebar">
       <button id="lockToggle">🔒 Lock</button>
     </aside>
-   
+ 
 <!--left Sidebar-->
  <class="leftsidebar" id="leftsidebarid"
      
 <ul class="leftsidebaritemclass">
-        <li>AI Assistant</li>
-        <li>Unlock Panels</li>
-        <li>Apperance</li>
-        <li>Switch User</li>
-        <li>Settings</li>
+  <li><a href="#">AI Assistant</a></li>
+  <li><a href="#">Unlock Panels</a></li>
+  <li><a href="#">Appearance</a></li>
+  <li><a href="#">Switch User</a></li>
+  <li><a href="#">Settings</a></li>
+</ul>
+</div>
       
 
     <!-- Main Workspace -->
