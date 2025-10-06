@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Manage Properties</title>
+</head>
+<body>
+
+  <h1>Saved Properties</h1>
+
+  <!-- User (separates each user's data) -->
+  <div>
+    <label>User ID:
+      <input type="text" id="userId" placeholder="e.g., user3242323" />
+    </label>
+    <button id="switchUserBtn">Switch User</button>
+  </div>
+
+  <hr />
+
+  <!-- Add property -->
+  <div>
+    <div>
+      <label>Address:
+        <input type="text" id="addressInput" placeholder="123 Main St, City, ST" />
+      </label>
+    </div>
+
+    <div>
+      <label>Tags (comma separated):
+        <input type="text" id="tagsInput" placeholder="kc, duplex" />
+      </label>
+    </div>
+
+    <button id="addPropertyBtn">Add Property</button>
+  </div>
+
+  <hr />
+
+  <!-- Search (with one-time hover alert) -->
+  <div>
+    <label>Search:
+      <input
+        type="text"
+        id="searchInput"
+        name="searchInput"
+        placeholder="Type address, city, note, or tag..."
+        onmouseover="showHoverAlertOnce('Enter property information')"
+      />
+    </label>
+    <button id="searchBtn">Search Properties</button>
+  </div>
+
+  <h3>Related Searches</h3>
+  <div id="results"></div>
+
+  <h3>Property Details</h3>
+  <div id="propertyDetails"></div>
+
+  <script>
+    // -------------------------
+    // Storage per user
+    // -------------------------
+    function storageKeyFor(userId) {
+      // Example: "user3242323.properties"
+      return (userId || "_default") + ".properties";
+    }
+
+    function getUserId() {
+      return (document.getElementById("userId").value || "").trim();
+    }
+
+    function readPropertyList(userId) {
+      var key = storageKeyFor(userId);
+      try {
+        return JSON.parse(localStorage.getItem(key) || "[]");
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function writePropertyList(userId, propertyList) {
+      var key = storageKeyFor(userId);
+      localStorage.setItem(key, JSON.stringify(propertyList));
+    }
+
+    // -------------------------
+    // UI helpers
+    // -------------------------
+    var hoverShown = false;
+    function showHoverAlertOnce(msg) {
+      if (!hoverShown) {
+        alert(msg || "Enter something related to your property.");
+        hoverShown = true;
+      }
+    }
+
+    function nowEnglish() {
+      return new Date().toLocaleString(); // English-like timestamp
+    }
+
+    function normalize(s) {
+      return (s == null ? "" : String(s)).toLowerCase();
+    }
+
+    // Wrap matches with square brackets (no <mark>)
+    function emphasizeMatches(text, term) {
+      if (!term) return text;
+      var safe = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      var re = new RegExp("(" + safe + ")", "ig");
+      return String(text).replace(re, "[$1]");
+    }
+
+    function propertyMatches(propertyItem, term) {
+      if (!term) return false;
+      var hay = [
+        normalize(propertyItem.address),
+        normalize(propertyItem.notes), // notes optional (not on the current add form)
+        Array.isArray(propertyItem.tags) ? normalize(propertyItem.tags.join(" ")) : "",
+        normalize(propertyItem.text) // legacy fallback
+      ].join(" ");
+      return hay.includes(term);
+    }
+
+    // Simple, readable line for results
+    function propertyLine(propertyItem) {
+      var addr = propertyItem.address || propertyItem.text || "(no address)";
+      var tags = (Array.isArray(propertyItem.tags) && propertyItem.tags.length)
+        ? " [" + propertyItem.tags.join(", ") + "]"
+        : "";
+      var when = propertyItem.createdAt ? " • " + propertyItem.createdAt : "";
+      return addr + tags + when;
+    }
+
+    // -------------------------
+    // Add property
+    // -------------------------
+    var propertyCounter = 0; // per-user counter after switch
+
+    function addProperty() {
+      var userId = getUserId();
+      if (!userId) {
+        alert("Please enter a User ID and click Switch User first.");
+        return;
+      }
+
+      var address = (document.getElementById("addressInput").value || "").trim();
+      var tagsStr = (document.getElementById("tagsInput").value || "").trim();
+
+      if (!address) {
+        alert("Address is required.");
+        return;
+      }
+
+      var tags = tagsStr
+        ? tagsStr.split(",").map(function(s){ return s.trim(); }).filter(Boolean)
+        : [];
+
+      // Increment counter and name it like storedProperty2
+      propertyCounter++;
+      var propertyName = "storedProperty" + propertyCounter;
+
+      var propertyItem = {
+        name: propertyName,
+        address: address,
+        tags: tags,
+        createdAt: nowEnglish()
+      };
+
+      var list = readPropertyList(userId);
+      list.push(propertyItem);
+      writePropertyList(userId, list);
+
+      // Clear inputs
+      document.getElementById("addressInput").value = "";
+      document.getElementById("tagsInput").value = "";
+
+      alert("Property " + propertyName + " added for " + userId + ".");
+
+      // If there's a current search term, refresh results
+      var currentTerm = (document.getElementById("searchInput").value || "").trim().toLowerCase();
+      if (currentTerm) runSearch(currentTerm);
+    }
+
+    // -------------------------
+    // Search + render
+    // -------------------------
+    function runSearch(term) {
+      var userId = getUserId();
+      var query = (term || "").toLowerCase();
+      var data = readPropertyList(userId);
+      var matches = query ? data.filter(function(p){ return propertyMatches(p, query); }) : [];
+
+      renderResults(matches, query);
+      return matches;
+    }
+
+    function renderResults(matchList, term) {
+      var out = document.getElementById("results");
+      if (!matchList.length) {
+        out.innerHTML = "<p>No matching properties found.</p>";
+        return;
+      }
+
+      // Build clickable list
+      var html = "<p>Found " + matchList.length + " match(es) in <b>Saved Properties</b>:</p><ul>";
+      for (var i = 0; i < matchList.length; i++) {
+        var p = matchList[i];
+        var line = propertyLine(p);
+        var display = emphasizeMatches(line, term);
+
+        // Each item clickable to show details
+        html += '<li><button data-index="'+ i +'" type="button">' + display + "</button></li>";
+      }
+      html += "</ul>";
+
+      out.innerHTML = html;
+
+      // Wire click handlers for each button
+      var buttons = out.querySelectorAll("button[data-index]");
+      for (var j = 0; j < buttons.length; j++) {
+        buttons[j].addEventListener("click", function(ev) {
+          var idx = Number(ev.currentTarget.getAttribute("data-index"));
+          showPropertyDetails(matchList[idx]);
+        });
+      }
+    }
+
+    function showPropertyDetails(propertyItem) {
+      var panel = document.getElementById("propertyDetails");
+      var addr = propertyItem.address || "(no address)";
+      var tags = Array.isArray(propertyItem.tags) && propertyItem.tags.length
+        ? propertyItem.tags.join(", ")
+        : "none";
+      var when = propertyItem.createdAt || "unknown";
+
+      // Plain English detail block
+      var html =
+        "Name: " + (propertyItem.name || "(unnamed)") + "<br>" +
+        "Address: " + addr + "<br>" +
+        "Tags: " + tags + "<br>" +
+        "Saved: " + when;
+
+      panel.innerHTML = html;
+    }
+
+    // -------------------------
+    // Events
+    // -------------------------
+    document.getElementById("addPropertyBtn").addEventListener("click", addProperty);
+
+    document.getElementById("searchBtn").addEventListener("click", function() {
+      var term = (document.getElementById("searchInput").value || "").trim();
+      if (!term) {
+        alert("Please enter a property name, address, note, or tag to search.");
+        return;
+      }
+      runSearch(term);
+    });
+
+    // Live results as they type
+    (function wireLiveSearch(){
+      var timer = null;
+      document.getElementById("searchInput").addEventListener("input", function(e) {
+        clearTimeout(timer);
+        var term = e.target.value;
+        timer = setTimeout(function(){ runSearch(term); }, 120);
+      });
+    })();
+
+    // Switch user: rebuild counter and clear views
+    document.getElementById("switchUserBtn").addEventListener("click", function() {
+      var userId = getUserId();
+      if (!userId) {
+        alert("Enter a User ID first.");
+        return;
+      }
+      var list = readPropertyList(userId);
+      propertyCounter = list.length; // keep numbering going
+      document.getElementById("results").innerHTML = "";
+      document.getElementById("propertyDetails").innerHTML = "";
+      alert("Switched to user: " + userId + " (" + propertyCounter + " saved)");
+    });
+  </script>
+
+</body>
+</html>
